@@ -10,6 +10,9 @@ RomArray = ['MMM', 'MM', 'M', 'CM', 'DCCC', 'DCC', 'DC', 'D', 'CD', 'CCC', 'CC',
 AraArray = [3000, 2000, 1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 90, 80, 70, 60,
 			50, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
+MIN_NUM = 1
+MAX_NUM = 3999
+
 def arabic_to_roman(ar_num):
 	numeral = ''
 	for i, v in enumerate(AraArray):
@@ -21,15 +24,21 @@ def arabic_to_roman(ar_num):
 	return numeral
 
 # Get a four digit Arabic Numeral from a user, convert it to a Roman Numeral
-u_arabic = raw_input('Please enter a number between 1 and 3999: ')
+u_arabic = raw_input('Please enter a number between %d and %d: ' % (MIN_NUM, MAX_NUM))
 u_arabic = int(u_arabic)
+if u_arabic > MAX_NUM:
+	quit('%d is too big. Please try again.' % u_arabic)
+elif u_arabic < MIN_NUM:
+	quit('%d is too small.  Please try again.' % u_arabic)
+
 
 print "Your Roman numeral is: " + arabic_to_roman(u_arabic)
 
 print '-' * 20
 
 # Get a Roman Numeral from a user, convert it to an Arabic Numeral
-u_roman = raw_input('Please enter a Roman Numeral between 1 and 3999: ')
+u_roman = raw_input('Please enter a Roman Numeral whose Arabic Numeral value is between %d and %d: ' % (MIN_NUM, MAX_NUM))
+
 
 def roman_to_arabic(ro_num):
 	numeral = int()
@@ -37,12 +46,9 @@ def roman_to_arabic(ro_num):
 		if ro_num.startswith(v):
 			numeral += AraArray[i]
 			ro_num = ro_num[len(v):]
+		if numeral == 0:
+			numeral = 'not between %d and %d.  Please try again. ' % (MIN_NUM, MAX_NUM)
 	return numeral
 
 print "Your Arabic Numeral is: " + str(roman_to_arabic(u_roman))
-
-
-
-
-
 
