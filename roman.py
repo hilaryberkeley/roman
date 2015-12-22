@@ -34,7 +34,7 @@ elif u_arabic < MIN_NUM:
 
 print "Your Roman numeral is: " + arabic_to_roman(u_arabic)
 
-print '-' * 20
+print '-' * 40
 
 # Get a Roman Numeral from a user, convert it to an Arabic Numeral
 u_roman = raw_input('Please enter a Roman Numeral whose Arabic Numeral value is between %d and %d: ' % (MIN_NUM, MAX_NUM))
