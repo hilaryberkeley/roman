@@ -34,10 +34,9 @@ u_roman = raw_input('Please enter a Roman Numeral between 1 and 3999: ')
 def roman_to_arabic(ro_num):
 	numeral = int()
 	for i, v in enumerate(RomArray):
-		if v in ro_num:
+		if ro_num.startswith(v):
 			numeral += AraArray[i]
-			
-			print numeral
+			ro_num = ro_num[len(v):]
 	return numeral
 
 print "Your Arabic Numeral is: " + str(roman_to_arabic(u_roman))
